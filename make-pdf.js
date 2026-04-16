@@ -25,7 +25,7 @@ const CSS_PATCH = `
     .hero-img   { height: 88mm !important; margin: -10mm -16mm 10mm !important; }
 
     /* Сжимаем внутренние отступы страниц */
-    .inner { padding: 10mm 16mm 12mm !important; min-height: 297mm; }
+    .inner { padding: 10mm 16mm 12mm !important; }
 
     /* Уменьшаем зазоры в FAQ */
     .faq-item     { margin-bottom: 4mm !important; padding-bottom: 4mm !important; }
