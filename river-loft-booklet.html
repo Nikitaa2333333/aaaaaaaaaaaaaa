@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>River Loft — Официальный Буклет</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+    <style>
+        /* ── DESIGN TOKENS ── */
+        :root {
+            --ink:    #1C1C1A;
+            --cream:  #F8F6F1;
+            --gold:   #A8915A;
+            --muted:  #6B6660;
+            --rule:   #D6D0C4;
+            --paper:  #F1EFE9;
+            --ease:   cubic-bezier(0.2, 1, 0.3, 1);
+            --grain:  url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+
+            --fs-xs:   10pt;
+            --fs-sm:   11pt;
+            --fs-body: 11.5pt;
+            --fs-md:   14pt;
+            --fs-lg:   15pt;
+            --fs-num:  20pt;
+            --fs-h2:   26pt;
+            --fs-h1:   44pt;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 10pt; }
+
+        body {
+            background: #D4CFC8;
+            font-family: 'Lora', Georgia, serif;
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            overflow: hidden;
+            background: var(--cream);
+            margin: 12mm auto;
+            position: relative;
+            page-break-after: always;
+            break-after: page;
+            box-shadow: 0 12px 60px rgba(0,0,0,.18);
+        }
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: var(--grain);
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 99;
+        }
+        .page:last-child {
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+
+        .inner {
+            height: 100%;
+            padding: 12mm 16mm 14mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.15;
+        }
+
+        .section-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13pt;
+            font-style: italic;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 4mm;
+            display: block;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 10mm;
+            left: 16mm;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--fs-sm);
+            font-weight: 500;
+            color: var(--gold);
+            opacity: 0.8;
+            z-index: 20;
+        }
+
+        .cover {
+            height: 100%;
+            background: var(--ink);
+            color: var(--cream);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20mm 22mm 24mm;
+        }
+        .cover-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.38;
+        }
+        .cover::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 30%, rgba(28,28,26,.72) 100%);
+            z-index: 5;
+        }
+        .cover-content { position: relative; z-index: 10; }
+        .cover-title-img {
+            width: 115mm;
+            filter: brightness(0) invert(1);
+            margin-bottom: 8mm;
+        }
+        .cover-tagline {
+            font-size: var(--fs-md);
+            max-width: 130mm;
+            line-height: 1.65;
+            color: rgba(248,246,241,.88);
+        }
+
+        .welcome-initial {
+            position: absolute;
+            top: 2mm; left: 8mm;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 130pt;
+            color: #EDEAE3;
+            line-height: 1;
+            z-index: 0;
+        }
+        .welcome-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--fs-h2);
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 6mm;
+            position: relative;
+            z-index: 1;
+        }
+        .welcome-text {
+            font-size: var(--fs-body);
+            line-height: 1.65;
+            margin-bottom: 4mm;
+            color: #2A2926;
+            position: relative;
+            z-index: 1;
+        }
+        .welcome-sign {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--fs-lg);
+            color: var(--gold);
+            margin-top: 4mm;
+            padding-top: 3mm;
+            border-top: 1px solid var(--rule);
+            position: relative;
+            z-index: 1;
+        }
+        .welcome-photo {
+            margin-top: auto;
+            height: 88mm;
+            width: calc(100% + 32mm);
+            margin-left: -16mm;
+            margin-bottom: -14mm;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .welcome-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+
+        .adv-item {
+            display: grid;
+            grid-template-columns: 12mm 1fr;
+            gap: 3mm;
+            margin-bottom: 6mm;
+            padding-bottom: 6mm;
+            border-bottom: 1px solid var(--rule);
+        }
+        .adv-item:last-of-type { border-bottom: none; }
+        .adv-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--fs-num);
+            color: var(--gold);
+            line-height: 1.1;
+            font-weight: 600;
+        }
+        .adv-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--fs-lg);
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 1.5mm;
+            color: var(--ink);
+        }
+        .adv-desc { font-size: var(--fs-body); line-height: 1.6; color: #3A3835; }
+
+        .faq-category {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15pt;
+            font-style: italic;
+            font-weight: 700;
+            color: var(--gold);
+            padding-bottom: 2mm;
+            margin-bottom: 6mm;
+            border-bottom: 1px solid var(--gold);
+        }
+        .faq-item {
+            margin-bottom: 5mm;
+            padding-bottom: 5mm;
+            border-bottom: 1px dashed var(--rule);
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--fs-md);
+            font-weight: 600;
+            font-style: italic;
+            line-height: 1.25;
+            margin-bottom: 2mm;
+            color: var(--ink);
+        }
+        .faq-a { font-size: var(--fs-body); line-height: 1.6; color: #2E2C29; }
+        .faq-a p { margin-bottom: 2mm; }
+        .faq-a ul, .faq-a ol { padding-left: 4mm; margin-bottom: 2mm; }
+        .faq-a li { margin-bottom: 1mm; }
+        .faq-a li::marker { color: var(--gold); }
+        .highlight-box {
+            background: var(--paper);
+            padding: 4mm 5mm;
+            margin-top: 4mm;
+            font-size: var(--fs-body);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .hero-img {
+            height: 82mm;
+            margin: -12mm -16mm 8mm;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .fact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4mm;
+            margin-top: auto;
+            padding-top: 6mm;
+            border-top: 1px solid var(--rule);
+        }
+        .fact-label { font-size: var(--fs-sm); color: var(--gold); margin-bottom: 1.5mm; }
+        .fact-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: var(--fs-md);
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .back-cover {
+            height: 100%;
+            background: var(--ink);
+            color: var(--cream);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20mm;
+            position: relative;
+        }
+        .back-logo {
+            width: 100mm;
+            filter: brightness(0) invert(1);
+            margin-bottom: 15mm;
+        }
+        .contact-label {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            font-size: 14pt;
+            margin-top: 6mm;
+        }
+        .contact-val { font-size: var(--fs-body); color: rgba(248,246,241,.85); }
+
+        @media print {
+            body { background: none; }
+            .page { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="cover">
+        <img src="IMG_20260414_202543.webp" class="cover-bg" alt="Cover">
+        <div class="cover-content">
+            <img src="Group 24.png" class="cover-title-img" alt="Logo">
+            <div class="cover-tagline">Место, где каждый праздник становится особенным и незабываемым</div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="inner">
+        <div class="welcome-initial">R</div>
+        <span class="section-label">Добро пожаловать</span>
+        <h2 class="welcome-heading">Добрый день<br>наши дорогие гости!</h2>
+        <p class="welcome-text">Мы очень рады, что Вы остановили свой выбор на нашей площадке!</p>
+        <p class="welcome-text">Команда River loft сделает всё для того, чтобы наши гости чувствовали себя максимально комфортно, как в процессе подготовки, так и в день мероприятия!</p>
+        <p class="welcome-text">В независимости от формата торжества, мы готовы помочь Вам с организацией, планированием, расстановкой столов, подбором подрядчиков, составлением меню, расчётом количества необходимых напитков и многих других вопросов.</p>
+        <p class="welcome-text">Выбирая River loft, Вы делаете своё мероприятие организованным, понятным и максимально комфортным!</p>
+        <div class="welcome-sign">Желаем Вам лёгкой подготовки и приятного отдыха!</div>
+        <div class="welcome-photo">
+            <img src="IMG_20260414_202514.webp" alt="Интерьер">
+        </div>
+    </div>
+    <div class="page-number">02</div>
+</div>
+
+<div class="page">
+    <div class="inner">
+        <span class="section-label">Наши преимущества</span>
+        <div class="adv-item">
+            <div class="adv-num">1.</div>
+            <div>
+                <div class="adv-title">Локация</div>
+                <div class="adv-desc">River loft находится на территории посёлка Дубровицы городского округа Подольск в 200 метрах от Церкви Знамения Пресвятой Богородицы. В месте слияния двух рек, Пахры и Десны. Рядом с нашим лофтом есть обширная бесплатная парковка, историческая усадьба Голицына и парк для прогулок.</div>
+            </div>
+        </div>
+        <div class="adv-item">
+            <div class="adv-num">2.</div>
+            <div>
+                <div class="adv-title">Работа под закрытие</div>
+                <div class="adv-desc">River loft работает в "закрытом" формате и кроме Вас и Ваших гостей в день мероприятия в зале никого не будет! На входе в лофт гостей встретит охранник, который следит за общим порядком и тем, чтобы посторонние в зал не заходили.</div>
+            </div>
+        </div>
+        <div class="adv-item">
+            <div class="adv-num">3.</div>
+            <div>
+                <div class="adv-title">Большой зал</div>
+                <div class="adv-desc">Основной зал имеет площадь 200 м² и комфортно размещает до 100 гостей при банкетной рассадке и 150 гостей в формате фуршета.</div>
+            </div>
+        </div>
+        <div class="adv-item">
+            <div class="adv-num">4.</div>
+            <div>
+                <div class="adv-title">Дополнительные помещения</div>
+                <div class="adv-desc">Помимо основного зала нашим гостям также доступны: гардеробная зона, зал Welcome для сбора гостей и организации фуршета, гримерная комната для подрядчиков и 4 полноценных уборных комнаты.</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">03</div>
+</div>
+
+<div class="page">
+    <div class="inner">
+        <div class="hero-img" style="height: 60mm;">
+            <img src="IMG_20260414_202558.webp" alt="Интерьер">
+        </div>
+        <div class="adv-item">
+            <div class="adv-num">5.</div>
+            <div>
+                <div class="adv-title">Богатое техническое оснащение</div>
+                <div class="adv-desc">2,5 кВт профессионального звука JBL, максимально крутая светомузыка, целых три экрана 65 дюймов и дым машина доступны нашим гостям, чтобы сделать каждый праздник особенным! Вам не придётся думать об аренде звука, светомузыки или экранов, просто приходите и отдыхайте!</div>
+            </div>
+        </div>
+        <div class="adv-item">
+            <div class="adv-num">6.</div>
+            <div>
+                <div class="adv-title">Профессиональная команда и высокий сервис</div>
+                <div class="adv-desc">Мы думаем о наших гостях и о том, как сделать каждое мероприятие ещё лучше. Более 10 лет наша команда работает над тем, чтобы каждое торжество было особенным. Профессиональные официанты, опытные повара и деликатные менеджеры помогут быть уверенными в том, что Вы сделали правильный выбор и мероприятие пройдёт именно так, как это задуманно. Нашим гостям также доступны пледы, зонтики и одноразовые тапочки, а для самых требовательных гостей есть формат VIP-обслуживания.</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">04</div>
+</div>
+
+<div class="page">
+    <div class="inner">
+        <span class="section-label">Вопросы и ответы</span>
+        <div class="faq-category">Стоимость и Бронирование</div>
+        <div class="faq-item">
+            <div class="faq-q">Как формируется стоимость мероприятия?</div>
+            <div class="faq-a">
+                <p>Смета на мероприятие обычно состоит из:</p>
+                <ol>
+                    <li>Меню гостей (~5000-7500 руб./чел за хороший стол).</li>
+                    <li>Меню молодоженов (~6000-10000 руб./чел.)</li>
+                    <li>Фуршет на ваше усмотрение (~500-1200 руб./чел.).</li>
+                    <li>Детское меню (~1000-3500 руб./чел.).</li>
+                    <li>Меню стафф (~2000 руб./чел.).</li>
+                    <li>Дополнительные услуги (на ваше усмотрение)</li>
+                    <li>Обслуживание 10% от стоимости мероприятия.</li>
+                    <li>Аренда зала от 50 до 100 тыс. руб. в зависимости от сезона и дня недели.</li>
+                </ol>
+                <div class="highlight-box">Как показывает практика, средняя стоимость хорошего мероприятия выходит ~7500-10000 руб./чел.</div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Какой размер аванса и сроки оплаты?</div>
+            <div class="faq-a">Для бронирования River loft необходимо заключить 2 договора. Договор на аренду помещения (аванс 50%) и договор Кейтеринга (аванс 30 тыс. руб.). Общий аванс составит от 55 до 80 тыс. руб. Окончательный расчет — за 7 дней до праздника.</div>
+        </div>
+    </div>
+    <div class="page-number">05</div>
+</div>
+
+<div class="page">
+    <div class="inner">
+        <div class="faq-category">Меню и детали</div>
+        <div class="faq-item">
+            <div class="faq-q">Какой ассортимент блюд необходим для банкета?</div>
+            <div class="faq-a">
+                <p>Меню составляется индивидуально. Рекомендовано:</p>
+                <ul>
+                    <li>1-3 вида салатов</li>
+                    <li>7-10 видов холодных закусок</li>
+                    <li>1-2 вида горячих закусок</li>
+                    <li>1-3 вида горячих блюд</li>
+                    <li>1-2 вида гарниров</li>
+                    <li>Соусы и хлеб</li>
+                </ul>
+                <p>Среднее количество еды: 1100-1400 грамм на персону.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Пробковый сбор и свои напитки?</div>
+            <div class="faq-a">Пробкового сбора нет. Все напитки можно принести с собой. Своя еда запрещена, кроме торта.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Какая музыкальная аппаратура и техника есть?</div>
+            <div class="faq-a">Система JBL PRX 400 (2.4 кВт). Использование возможно только при наличии диджея. Подключение через XLR. Микрофонов нет. Есть три ТВ 65 дюймов для трансляции видео.</div>
+        </div>
+    </div>
+    <div class="page-number">06</div>
+</div>
+
+<div class="page">
+    <div class="inner">
+        <div class="faq-category">Особенности площадки</div>
+        <div class="faq-item">
+            <div class="faq-q">Кто управляет светом и техникой?</div>
+            <div class="faq-a">River loft оснащен современным светом (WASH, Beam, Smoke machine). Управление осуществляет наш сотрудник, его услуги включены в аренду. Тайминг монтажа декора: 5 часов до начала.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Какие доплаты могут быть?</div>
+            <div class="faq-a">
+                <ul>
+                    <li>Чай и кофе (100-250 руб./гостя).</li>
+                    <li>Бой посуды и порча имущества (по факту).</li>
+                    <li>Продление после 23.00 (20 тыс. руб./час).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="hero-img" style="height: 100mm; margin-top: auto; margin-bottom: -14mm;">
+            <img src="IMG_20260414_202520.webp" alt="Локация">
+        </div>
+    </div>
+    <div class="page-number">07</div>
+</div>
+
+<div class="page">
+    <div class="back-cover">
+        <img src="Group 24.png" class="back-logo" alt="Logo">
+        <div class="contact-label">Локация</div>
+        <div class="contact-val">Дубровицы, Подольск, МО</div>
+        <div class="contact-label">Рядом</div>
+        <div class="contact-val">Церковь Знамения · Усадьба Голицына</div>
+        <div style="margin-top: 20mm; opacity: 0.3; font-family: 'Cormorant Garamond', serif;">Место, где рождаются воспоминания</div>
+    </div>
+    <div class="page-number">08</div>
+</div>
+
+</body>
+</html>
